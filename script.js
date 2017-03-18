@@ -15,9 +15,13 @@
         let image = eventObj.target;
         let name = image.id;
         image.src = "./image/" + name + ".jpg";
-        setTimeout(function () {
-            image.src = "./image/" + name + "blur.jpg";
-        }, 2000);
+        setTimeout(reblur, 2000, image);
+    }
+
+    function reblur(image) {
+        let name = image.id;
+        image.src = "./image/" + name + "blur.jpg";
+
     }
 }());
 
