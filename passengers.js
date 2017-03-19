@@ -1,7 +1,3 @@
-(function () {
-    'use strict';
-}());
-
 let passengers = [
     {
         name: "Jane Doloop",
@@ -46,21 +42,37 @@ function processPassengers(passengers, testFunction) {
     return true;
 }
 
-function serveCustomer(passenger) {
-    let getDrinkOrderFunction = createDrinkOrder(passenger);
-    getDrinkOrderFunction();
+function serveCustomer() {
+    let getDrinkOrderFunctionFirstClass = createDrinkOrder({class: "firstclass"});
+    getDrinkOrderFunctionFirstClass();
+    let getDrinkOrderFunctionSecondClass = createDrinkOrder({class: "second"});
+    getDrinkOrderFunctionSecondClass();
 }
 
-function servePassengers(passengers) {
+function servePassengers() {
+        serveCustomer();
+
+}
+
+function passengersListByClass(passengers, config) {
+    let passengersClass= [];
     for (let i=0; i < passengers.length; i++) {
-        serveCustomer(passengers[i]);
+        if (passengers[i].ticket === config.ticket) {
+            passengersClass.push(passengers[i]);
+        }
     }
+    return passengersClass;
 }
 
-function createDrinkOrder(passenger) {
+let firstClassPassengers = passengersListByClass(passengers, {ticket: "firstclass"});
+console.log(firstClassPassengers);
+
+
+
+function createDrinkOrder(config) {
     let orderFunction;
 
-    if (passenger.ticket === "firstclass") {
+    if (config.class === "firstclass") {
         orderFunction = function () {
             console.log("Would you like a cocktail or wine?");
         };
