@@ -15,8 +15,20 @@ function multN(n) {
         return n * b;
     };
 }
+function counter() {
+    var count = 0;
+    return {
+        increment: function () {
+            count++;
+            return count;
+        }
+    };
+}
 
-var password = makePassword("pass");
-var guessPass = password("pss");
-var mult = multN(3);
-var guessPass = mult(1);
+
+
+var countNew = counter();
+console.log(countNew());
+console.log(countNew());
+console.log(countNew());
+
