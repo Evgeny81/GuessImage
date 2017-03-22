@@ -12,19 +12,19 @@
         }
     </style>
     <script>
-        let count = 0;
 
         window.onload = function () {
+            let count = 0;
+            let div = document.getElementById("message");
+            let message = "You clicked me ";
+
             let button = document.getElementById("clickme");
-            button.onclick = handleClick;
+            button.onclick = function () {
+                count++;
+                div.innerHTML = message + count + " times!";
+            };
         };
 
-        function handleClick() {
-            let message = "You clicked me ";
-            let div = document.getElementById("message");
-            count++;
-            div.innerHTML = message + count + " times!";
-        }
     </script>
 </head>
 <body>
