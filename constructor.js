@@ -20,6 +20,41 @@
     let houseBlend = new Coffee("House Blend", 12);
     let darkRoast = new Coffee("Dark Roast", 16);
 
-    console.log(houseBlend.toString());
-    console.log(darkRoast.toString());
+    function Car(params) {
+        this.make = params.make;
+        this.model = params.model;
+        this.year = params.year;
+        this.color = params.color;
+        this.passengers = params.passengers;
+        this.convertible = params.convertible;
+        this.mileage = params.mileage;
+        this.started = params.started;
+
+        this.start = function () {
+            this.started = true;
+        };
+        this.stop = function () {
+            this.started = false;
+        };
+        this.drive = function () {
+            if (this.started) {
+                console.log(this.make + " " + this.model + " goes zoom zoom");
+            } else {
+                console.log("Start the engine first");
+            }
+        };
+    }
+
+    let chevy = new Car ({
+        make: "Chevy",
+        model: "Bel Air",
+        year: 1957,
+        color: "red",
+        passengers: 2,
+        convertible: false,
+        mileage: 1021
+    });
+
+    console.log(chevy instanceof Car);
+
 }());
