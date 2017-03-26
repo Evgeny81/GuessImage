@@ -29,20 +29,6 @@
         this.convertible = params.convertible;
         this.mileage = params.mileage;
         this.started = params.started;
-
-        this.start = function () {
-            this.started = true;
-        };
-        this.stop = function () {
-            this.started = false;
-        };
-        this.drive = function () {
-            if (this.started) {
-                console.log(this.make + " " + this.model + " goes zoom zoom");
-            } else {
-                console.log("Start the engine first");
-            }
-        };
     }
 
     let chevy = new Car ({
@@ -55,6 +41,24 @@
         mileage: 1021
     });
 
-    console.log(chevy instanceof Car);
+    Car.prototype.start = function () {
+        this.started = true;
+    };
+
+    Car.prototype.stop = function () {
+        this.started = false;
+    };
+
+    Car.prototype.drive = function () {
+        if (this.started) {
+            console.log(this.make + " " + this.model + " goes zoom zoom");
+        } else {
+            console.log("Start the engine first");
+        }
+    };
+
+    chevy.start();
+    chevy.drive();
+
 
 }());
