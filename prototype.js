@@ -40,5 +40,29 @@
     robby.blinkLights();
     rosie.cleanHouse();
 
- 
+    function Game() {
+        this.level = 0;
+    }
+
+    Game.prototype.play = function () {
+        this.level++;
+        console.log("Welcome to level " + this.level);
+        this.unlock();
+    };
+
+    Game.prototype.unlock = function () {
+        if (this.level>=42 && !Robot.prototype.deployLaser) {
+            Robot.prototype.deployLaser = function () {
+                console.log(this.name + " Laser");
+            };
+        }
+    };
+
+    let game = new Game();
+    while (game.level < 42) {
+        game.play();
+    }
+
+    robby.deployLaser();
+    rosie.deployLaser();
 }());
