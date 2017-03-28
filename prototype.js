@@ -58,11 +58,28 @@
         }
     };
 
-    let game = new Game();
-    while (game.level < 42) {
-        game.play();
-    }
+    // let game = new Game();
+    // while (game.level < 42) {
+    //     game.play();
+    // }
+    //
+    // robby.deployLaser();
+    // rosie.deployLaser();
 
-    robby.deployLaser();
-    rosie.deployLaser();
+    Robot.prototype.errorMessage = "All systems go.";
+    Robot.prototype.reportError = function () {
+        console.log(this.name + " says " + this.errorMessage);
+    };
+    Robot.prototype.spillWater = function () {
+        this.errorMessage = "I appear to have a short circuit!";
+    };
+
+    rosie.reportError();
+    robby.reportError();
+    robby.spillWater();
+    rosie.reportError();
+    robby.reportError();
+
+    console.log(robby.hasOwnProperty("errorMessage"));
+    console.log(rosie.hasOwnProperty("errorMessage"));
 }());
