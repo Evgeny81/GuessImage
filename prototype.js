@@ -82,4 +82,28 @@
 
     console.log(robby.hasOwnProperty("errorMessage"));
     console.log(rosie.hasOwnProperty("errorMessage"));
+
+    function SpaceRobot(name, year, owner, homePlanet) {
+        this.name = name;
+        this.year = year;
+        this.owner = owner;
+        this.homePlanet = homePlanet;
+    }
+
+    SpaceRobot.prototype = new Robot();
+    SpaceRobot.prototype.speak = function () {
+        console.log(this.name + " says smt");
+    };
+    SpaceRobot.prototype.pilot = function () {
+        console.log(this.name + " says pilot");
+    };
+
+    let c3po = new SpaceRobot("c3po", 1977, "Luke Skywalker", "Tatooine");
+    c3po.speak();
+    c3po.pilot();
+    c3po.makeCoffee();
+    console.log(c3po.name + " was made by " + c3po.maker);
+    console.log(c3po instanceof SpaceRobot);
+    console.log(c3po instanceof Robot);
+
 }());
