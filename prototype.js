@@ -84,13 +84,13 @@
     console.log(rosie.hasOwnProperty("errorMessage"));
 
     function SpaceRobot(name, year, owner, homePlanet) {
-        this.name = name;
-        this.year = year;
-        this.owner = owner;
+        Robot.call(this, name, year, owner);
         this.homePlanet = homePlanet;
     }
 
     SpaceRobot.prototype = new Robot();
+    SpaceRobot.prototype.constructor = SpaceRobot;
+
     SpaceRobot.prototype.speak = function () {
         console.log(this.name + " says smt");
     };
@@ -103,7 +103,7 @@
     c3po.pilot();
     c3po.makeCoffee();
     console.log(c3po.name + " was made by " + c3po.maker);
-    console.log(c3po instanceof SpaceRobot);
-    console.log(c3po instanceof Robot);
+    console.log(" " + SpaceRobot.constructor);
+    console.log(Robot.constructor);
 
 }());
