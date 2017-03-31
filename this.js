@@ -5,17 +5,25 @@
 
 let dj ={
     playsound: function () {
-        console.log("Playing " , this);
+        console.log("Playing " , this.sound);
     },
     sound: "bells"
 };
 
 let controller = {
     start: function () {
-        setInterval(dj.playsound, 1000);
+        let set = setInterval(dj.playsound.bind(dj), 1000);
+        setTimeout(clearInterval(set), 5000);
     }
 };
 
-
-
 // controller.start();
+
+function testThis() {
+    console.log("This is: ", this);
+}
+let dog = {
+    name: "Fido"
+};
+
+testThis.call(dog);
