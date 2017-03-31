@@ -11,13 +11,16 @@ let dj ={
 };
 
 let controller = {
+    timer: null,
     start: function () {
-        let set = setInterval(dj.playsound.bind(dj), 1000);
-        setTimeout(clearInterval(set), 5000);
+        this.timer = setInterval(dj.playsound.bind(dj), 1000);
+    },
+    stop: function () {
+        clearInterval(this.timer);
     }
 };
 
-// controller.start();
+controller.start();
 
 function testThis() {
     console.log("This is: ", this);
