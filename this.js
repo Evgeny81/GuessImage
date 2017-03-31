@@ -26,4 +26,5 @@ let dog = {
     name: "Fido"
 };
 
-testThis.call(dog);
+let newFunction = testThis.bind(dog);
+newFunction();
