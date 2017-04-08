@@ -1,1 +1,1 @@
-# Async programming GuessImage game
+Some scripts to understand JS better.
